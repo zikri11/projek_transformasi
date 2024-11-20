@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformasi Gambar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Judul -->
+        <h1 class="text-2xl md:text-4xl font-bold text-center text-gray-800 mb-6">Transformasi Gambar</h1>
+
+        <!-- Formulir -->
+        <div class="max-w-2xl mx-auto bg-white shadow-md rounded-lg p-6">
+            <form action="/process" method="post" enctype="multipart/form-data" class="space-y-5">
+                <!-- Upload Gambar -->
+                <div>
+                    <label for="image" class="block text-sm font-medium text-gray-700">Upload Gambar</label>
+                    <input type="file" name="image" id="image" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400" required>
+                </div>
+
+                <!-- Pilih Transformasi -->
+                <div>
+                    <label for="transform" class="block text-sm font-medium text-gray-700">Pilih Transformasi</label>
+                    <select name="transform" id="transform" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400">
+                        <option value="rotate">Rotasi</option>
+                        <option value="reflect">Refleksi</option>
+                        <option value="dilate">Dilatasi</option>
+                        <option value="project">Proyeksi</option>
+                    </select>
+                </div>
+
+                <!-- Opsi Transformasi -->
+                <div id="rotate-options" style="display: none;">
+                    <label for="degree" class="block text-sm font-medium text-gray-700">Derajat Rotasi</label>
+                    <input type="number" name="degree" id="degree" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400">
+                </div>
+
+                <div id="reflect-options" style="display: none;">
+                    <label for="axis" class="block text-sm font-medium text-gray-700">Sumbu Refleksi</label>
+                    <select name="axis" id="axis" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400">
+                        <option value="x">Horizontal (X)</option>
+                        <option value="y">Vertikal (Y)</option>
+                    </select>
+                </div>
+
+                <div id="dilate-options" style="display: none;">
+                    <label for="scale" class="block text-sm font-medium text-gray-700">Skala Dilatasi</label>
+                    <input type="number" step="0.1" name="scale" id="scale" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400">
+                </div>
+
+                <div id="project-options" style="display: none;">
+                    <label for="shear" class="block text-sm font-medium text-gray-700">Faktor Proyeksi</label>
+                    <input type="number" step="0.1" name="shear" id="shear" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400">
+                    <label for="axis" class="block text-sm font-medium text-gray-700 mt-3">Sumbu Proyeksi</label>
+                    <select name="axis" id="axis" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400">
+                        <option value="x">Horizontal (X)</option>
+                        <option value="y">Vertikal (Y)</option>
+                    </select>
+                </div>
+
+                <!-- Tombol Submit -->
+                <div>
+                    <button type="submit" class="w-full bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        Transformasikan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        const transformSelect = document.getElementById('transform');
+        const rotateOptions = document.getElementById('rotate-options');
+        const reflectOptions = document.getElementById('reflect-options');
+        const dilateOptions = document.getElementById('dilate-options');
+        const projectOptions = document.getElementById('project-options');
+
+        transformSelect.addEventListener('change', function () {
+            rotateOptions.style.display = 'none';
+            reflectOptions.style.display = 'none';
+            dilateOptions.style.display = 'none';
+            projectOptions.style.display = 'none';
+
+            if (this.value === 'rotate') {
+                rotateOptions.style.display = 'block';
+            } else if (this.value === 'reflect') {
+                reflectOptions.style.display = 'block';
+            } else if (this.value === 'dilate') {
+                dilateOptions.style.display = 'block';
+            } else if (this.value === 'project') {
+                projectOptions.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

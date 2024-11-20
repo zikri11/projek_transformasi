@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Transformasi Gambar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">Hasil Transformasi Gambar</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Gambar Asli -->
+            <div class="bg-white shadow-lg rounded-lg p-4">
+                <h2 class="text-xl font-semibold text-center mb-4">Gambar Asli</h2>
+                <img src="{{ original_image }}" alt="Gambar Asli" class="mx-auto rounded-md shadow-md">
+            </div>
+
+            <!-- Gambar Transformasi -->
+            <div class="bg-white shadow-lg rounded-lg p-4">
+                <h2 class="text-xl font-semibold text-center mb-4">Gambar Transformasi</h2>
+                <img src="{{ transformed_image }}" alt="Gambar Transformasi" class="mx-auto rounded-md shadow-md">
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <a href="/" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700">
+                Kembali ke Halaman Utama
+            </a>
+        </div>
+    </div>
+</body>
+</html>
